@@ -116,6 +116,7 @@ export default class LiveApi {
       try {
           const proxy = this.proxy;
           console.log(proxy);
+          console.log(urlPlusParams);
           const options = url.parse(proxy);
           const agent = new HttpsProxyAgent(options);
           this.socket = new WebSocket(urlPlusParams, { agent });
