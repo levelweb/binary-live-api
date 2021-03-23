@@ -100,7 +100,7 @@ export default class LiveApi {
       });
   }
 
-  connect(): void {
+  connect(WebSocket: connection): void {
       const optionalParam = this.brand ? `&brand=${this.brand}` : '';
       const urlPlusParams = `${this.apiUrl}?l=${this.language}&app_id=${this.appId}${optionalParam}`;
 
@@ -119,7 +119,7 @@ export default class LiveApi {
           console.log(urlPlusParams);
           const options = url.parse(proxy);
           const agent = new HttpsProxyAgent(options);
-          this.socket = new WebSocket(urlPlusParams, { agent });
+          this.socket = connection || new WebSocket(urlPlusParams, { agent });
       } catch (err) {
       // swallow connection error, we can't do anything about it
       } finally {
