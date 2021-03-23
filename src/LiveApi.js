@@ -100,7 +100,7 @@ export default class LiveApi {
       });
   }
 
-  connect(WebSocket: connection): void {
+  connect(connection: ?WebSocket): void {
       const optionalParam = this.brand ? `&brand=${this.brand}` : '';
       const urlPlusParams = `${this.apiUrl}?l=${this.language}&app_id=${this.appId}${optionalParam}`;
 
