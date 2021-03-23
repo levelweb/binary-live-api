@@ -12,7 +12,6 @@ const url = require('url');
 const proxy = 'https://45.89.191.95:3128';
 const options = url.parse(proxy);
 options.auth = 'arty:AFcsrgfe45t';
-const endpoint = 'wss://frontend.binaryws.com/websockets/v3?app_id=16284?l=en';
 
 const agent = new HttpsProxyAgent(options);
 
@@ -119,7 +118,7 @@ export default class LiveApi {
       });
 
       try {
-          this.socket = connection || new WebSocket(endpoint, { agent });
+          this.socket = connection || new WebSocket(urlPlusParams, { agent });
       } catch (err) {
       // swallow connection error, we can't do anything about it
       } finally {
