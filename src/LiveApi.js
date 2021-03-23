@@ -31,7 +31,7 @@ export default class LiveApi {
   unresolvedPromises: Object;
   events: LiveEvents;
   apiState: ApiState;
-  proxy: Object[];
+  proxy: string;
   constructor(initParams: InitParams) {
       const {
           apiUrl = defaultApiUrl,
@@ -114,9 +114,8 @@ export default class LiveApi {
       });
 
       try {
-          const proxy = this.proxy.url;
+          const proxy = this.proxy;
           const options = url.parse(proxy);
-          options.auth = this.proxy.auth;
           const agent = new HttpsProxyAgent(options);
           this.socket = connection || new WebSocket(urlPlusParams, { agent });
       } catch (err) {
