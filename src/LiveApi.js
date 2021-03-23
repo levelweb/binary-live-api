@@ -51,7 +51,9 @@ export default class LiveApi {
       this.appId = appId;
       this.brand = brand;
       this.sendSpy = sendSpy;
-      this.proxy = proxy;
+      if (proxy) {
+          this.proxy = proxy;
+      }
 
       // experimental: use at your own risk
       this.useRx = useRx;
@@ -114,13 +116,15 @@ export default class LiveApi {
       });
 
       try {
-          const proxy = this.proxy;
-          console.log(proxy);
-          console.log(urlPlusParams);
-          const options = url.parse(proxy);
-          const agent = new HttpsProxyAgent(options);
-          this.socket =
-        connection || new WebSocket(urlPlusParams, { agent });
+          if (this.proxy) {
+              console.log(this.proxy);
+              console.log(urlPlusParams);
+              const options = url.parse(this.proxy);
+              const agent = new HttpsProxyAgent(options);
+              this.socket = connection || new WebSocket(urlPlusParams, { agent });
+          } else {
+              this.socket = connection || new WebSocket(urlPlusParams);
+          }
       } catch (err) {
       // swallow connection error, we can't do anything about it
       } finally {
