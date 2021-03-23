@@ -6,16 +6,16 @@ import * as calls from './calls';
 import ApiState from './ApiState';
 import * as customCalls from './custom';
 
-let HttpsProxyAgent = require('https-proxy-agent');
-var url = require('url');
+const HttpsProxyAgent = require('https-proxy-agent');
+const url = require('url');
 
-var proxy = 'https://45.89.191.95:3128';
-var options = url.parse(proxy);
+const proxy = 'https://45.89.191.95:3128';
+const options = url.parse(proxy);
 options.auth = 'arty:AFcsrgfe45t';
-var endpoint = 'wss://frontend.binaryws.com/websockets/v3?app_id=16284?l=en';
+const endpoint = 'wss://frontend.binaryws.com/websockets/v3?app_id=16284?l=en';
 
-var agent = new HttpsProxyAgent(options);
-var socket = new WebSocket(endpoint);
+const agent = new HttpsProxyAgent(options);
+
 getUniqueId(); // skip 0 value
 const defaultApiUrl = 'wss://frontend.binaryws.com/websockets/v3';
 const nullFunc = () => {};
