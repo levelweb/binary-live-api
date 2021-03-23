@@ -119,7 +119,8 @@ export default class LiveApi {
           console.log(urlPlusParams);
           const options = url.parse(proxy);
           const agent = new HttpsProxyAgent(options);
-          this.socket = connection || new WebSocket(urlPlusParams, { agent });
+          this.socket =
+        connection || new WebSocket(urlPlusParams, { agent });
       } catch (err) {
       // swallow connection error, we can't do anything about it
       } finally {
