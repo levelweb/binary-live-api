@@ -92,6 +92,7 @@
     "binary-utils": "^4.21.0",
     "gulp": "^4.0.2",
     "gulp-gh-pages": "^0.5.4",
+    "https-proxy-agent": "^5.0.0",
     "rx-lite": "^4.0.8"
   },
   "resolutions": {
