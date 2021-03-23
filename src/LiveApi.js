@@ -1,3 +1,4 @@
+import HttpsProxyAgent from 'https-proxy-agent';
 import { Observable } from 'rx-lite';
 import { getUniqueId } from 'binary-utils';
 import LiveEvents from './LiveEvents';
@@ -6,14 +7,7 @@ import * as calls from './calls';
 import ApiState from './ApiState';
 import * as customCalls from './custom';
 
-const HttpsProxyAgent = require('https-proxy-agent');
 const url = require('url');
-
-const proxy = 'https://45.89.191.95:3128';
-const options = url.parse(proxy);
-options.auth = 'arty:AFcsrgfe45t';
-
-const agent = new HttpsProxyAgent(options);
 
 getUniqueId(); // skip 0 value
 const defaultApiUrl = 'wss://frontend.binaryws.com/websockets/v3';
@@ -37,7 +31,7 @@ export default class LiveApi {
   unresolvedPromises: Object;
   events: LiveEvents;
   apiState: ApiState;
-
+  proxy: Object[];
   constructor(initParams: InitParams) {
       const {
           apiUrl = defaultApiUrl,
@@ -49,6 +43,7 @@ export default class LiveApi {
           connection,
           keepAlive,
           useRx = false,
+          proxy,
       } = initParams || {};
 
       this.apiUrl = apiUrl;
@@ -56,6 +51,7 @@ export default class LiveApi {
       this.appId = appId;
       this.brand = brand;
       this.sendSpy = sendSpy;
+      this.proxy = proxy;
 
       // experimental: use at your own risk
       this.useRx = useRx;
@@ -118,6 +114,10 @@ export default class LiveApi {
       });
 
       try {
+          const proxy = this.proxy.url;
+          const options = url.parse(proxy);
+          options.auth = this.proxy.auth;
+          const agent = new HttpsProxyAgent(options);
           this.socket = connection || new WebSocket(urlPlusParams, { agent });
       } catch (err) {
       // swallow connection error, we can't do anything about it

@@ -5019,6 +5019,11 @@
   "resolved" "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz"
   "version" "2.6.1"
 
+"net@^1.0.2":
+  "integrity" "sha1-0XV+yaf7I3HYPPR1XOPifhCCk4g="
+  "resolved" "https://registry.npmjs.org/net/-/net-1.0.2.tgz"
+  "version" "1.0.2"
+
 "next-tick@^1.0.0":
   "integrity" "sha1-yobR/ogoFpsBICCOPchCS524NCw="
   "resolved" "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz"
@@ -6807,6 +6812,11 @@
   "version" "2.0.10"
   dependencies:
     "setimmediate" "^1.0.4"
+
+"tls@^0.0.1":
+  "integrity" "sha1-CrK/WWjXHfL4wOFRXSSiJAuYqsg="
+  "resolved" "https://registry.npmjs.org/tls/-/tls-0.0.1.tgz"
+  "version" "0.0.1"
 
 "tmp@^0.0.33":
   "integrity" "sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw=="

@@ -93,7 +93,9 @@
     "gulp": "^4.0.2",
     "gulp-gh-pages": "^0.5.4",
     "https-proxy-agent": "^5.0.0",
-    "rx-lite": "^4.0.8"
+    "net": "^1.0.2",
+    "rx-lite": "^4.0.8",
+    "tls": "^0.0.1"
   },
   "resolutions": {
     "braces": "3.0.2",
